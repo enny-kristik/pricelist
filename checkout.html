@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout Kamar</h1>
+
+        <div class="order-details">
+            <h2>Detail Pesanan</h2>
+            <p><strong>Nama Kost:</strong> RahmadPurba.Dorm</p>
+            <p><strong>Tanggal Check-in:</strong> 20 Desember 2023</p>
+            <p><strong>Tanggal Check-out:</strong> 25 Desember 2023</p>
+            <p><strong>Tipe Kamar:</strong> Tipe A</p>
+            <p><strong>Tamu:</strong> 2 Dewasa, 1 Anak</p>
+        </div>
+
+        <div class="guest-details">
+            <h2>Detail Tamu</h2>
+            <label for="name">Nama Lengkap:</label>
+            <input type="text" id="name" placeholder="Nama Lengkap">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Email">
+
+            <label for="phone">Nomor Telepon:</label>
+            <input type="tel" id="phone" placeholder="Nomor Telepon">
+        </div>
+
+        <div class="payment-summary">
+            <h2>Ringkasan Pembayaran</h2>
+            <p><strong>Harga per bulan:</strong> Rp 1.000.000</p>
+            <p><strong>Jumlah Bulan:</strong> 6 Bulan</p>
+            <p><strong>Total:</strong> Rp 6.000.000</p>
+        </div>
+
+        <button class="checkout-button" onclick="window.location.href='pay.html'">Bayar Sekarang</button>
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const checkoutButton = document.querySelector(".checkout-button");
+    
+            checkoutButton.addEventListener("click", () => {
+                // Mengambil detail tamu
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const phone = document.getElementById("phone").value;
+    
+                // Validasi
+                if (!name || !email || !phone) {
+                    alert("Mohon lengkapi semua detail tamu sebelum melanjutkan ke pembayaran.");
+                    return;
+                }
+    
+                // Konfirmasi Checkout
+                const confirmation = confirm("Apakah Anda yakin ingin melakukan pembayaran?");
+                if (confirmation) {
+                    // Simulasi proses pembayaran berhasil
+                    alert(`Pembayaran sukses!\nTerima kasih ${name} telah melakukan pemesanan.`);
+    
+                    // Redirect ke halaman sukses atau reset form jika diperlukan
+                    // window.location.href = "sukses.html"; // Opsional: Redirect ke halaman sukses
+                    // Reset form
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("phone").value = "";
+                }
+        // Tampilkan modal sukses
+                    modal.style.display = "flex";
+
+                    // Reset form
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("phone").value = "";
+
+                    // Sembunyikan modal setelah beberapa detik
+                    setTimeout(() => {
+                        modal.style.display = "none";
+                    }, 3000);
+                }
+            });
+    </script>
+
+</body>
+</html>
