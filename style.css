@@ -18,7 +18,7 @@
   
   header {
     width: 100%;
-    background-color: #ff5aa7;
+    background-color: #333;
     padding: 10px 0;
     color: #fff;
   }
@@ -47,11 +47,11 @@
   }
   
   .login-btn {
-    background-color: #e00561;
+    background-color: #4caf50;
   }
   
   .cta-btn {
-    background-color: #e00561;
+    background-color: #ff5722;
   }
   
   .navbar-links a:hover {
@@ -122,7 +122,7 @@
   
   footer {
     width: 100%;
-    background-color: #ff5aa7;
+    background-color: #333;
     padding: 15px 0;
     color: #fff;
     text-align: center;
