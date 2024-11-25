@@ -5,42 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Checkout</title>
     <style>
+        /* Global styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+
+        /* Flexbox layout for larger screens */
         .checkout-section {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
         .order-summary, .billing-info {
             width: 48%;
+            margin-bottom: 20px;
         }
+        
+        /* Styling for tables and forms */
         .order-summary table, .billing-info form {
             width: 100%;
             border-collapse: collapse;
         }
-        .order-summary table th, .order-summary table td, .billing-info form label, .billing-info form input {
+        .order-summary table th, .order-summary table td, .billing-info form label, .billing-info form input, .billing-info form select {
             padding: 8px;
             margin: 4px 0;
         }
         .order-summary table th {
             background-color: #f2f2f2;
         }
-        .order-summary table td, .billing-info form input {
+        .order-summary table td, .billing-info form input, .billing-info form select {
             border: 1px solid #ccc;
         }
         .order-summary .total {
@@ -48,6 +56,19 @@
             font-size: 1.2em;
             text-align: right;
         }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .checkout-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .order-summary, .billing-info {
+                width: 100%;
+            }
+        }
+
+        /* Button styles */
         .btn {
             display: inline-block;
             background-color: #4CAF50;
@@ -58,9 +79,16 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
+            border: none;
         }
         .btn:hover {
             background-color: #45a049;
+        }
+
+        /* Error message styling */
+        .error {
+            color: red;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -105,7 +133,7 @@
         <!-- Billing Information -->
         <div class="billing-info">
             <h2>Informasi Pembayaran</h2>
-            <form>
+            <form id="checkout-form">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
 
@@ -125,11 +153,40 @@
                     <option value="cash-on-delivery">Cash on Delivery</option>
                 </select>
 
+                <div class="error" id="error-message"></div>
+
                 <button type="submit" class="btn">Bayar Sekarang</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    // Fungsi untuk menangani pengiriman formulir checkout
+    document.getElementById("checkout-form").addEventListener("submit", function(event) {
+        event.preventDefault();  // Mencegah pengiriman form biasa untuk validasi
+
+        // Mengambil nilai dari inputan
+        var name = document.getElementById("name").value;
+        var address = document.getElementById("address").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var paymentMethod = document.getElementById("payment-method").value;
+
+        // Validasi form
+        if (!name || !address || !email || !phone) {
+            document.getElementById("error-message").textContent = "Semua kolom harus diisi!";
+            return;
+        } else {
+            document.getElementById("error-message").textContent = ""; // Menghapus pesan error
+        }
+
+        // Simulasi pemrosesan pembayaran
+        alert("Pembayaran berhasil menggunakan metode: " + paymentMethod + "\n" +
+              "Total: Rp 350.000\n" +
+              "Terima kasih telah berbelanja!");
+    });
+</script>
 
 </body>
 </html>
