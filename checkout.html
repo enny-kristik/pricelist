@@ -1,89 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-    <link rel="stylesheet" href="checkout.css">
+    <title>Halaman Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .checkout-section {
+            display: flex;
+            justify-content: space-between;
+        }
+        .order-summary, .billing-info {
+            width: 48%;
+        }
+        .order-summary table, .billing-info form {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .order-summary table th, .order-summary table td, .billing-info form label, .billing-info form input {
+            padding: 8px;
+            margin: 4px 0;
+        }
+        .order-summary table th {
+            background-color: #f2f2f2;
+        }
+        .order-summary table td, .billing-info form input {
+            border: 1px solid #ccc;
+        }
+        .order-summary .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: right;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Checkout Barang</h1>
 
-        <div class="order-details">
-            <h2>Detail Pesanan</h2>
-            <p><strong>Barang pesanan :</strong> Taplak meja</p>
-            <p><strong>Tanggal Check-in:</strong> 20 Desember 2023</p>
-            <p><strong>Tanggal Check-out:</strong> 25 Desember 2023</p>
-            <p><strong>Tipe Kamar:</strong> Tipe A</p>
-            <p><strong>Tamu:</strong> 2 Dewasa, 1 Anak</p>
+<div class="container">
+    <h1>Halaman Checkout</h1>
+    <div class="checkout-section">
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h2>Ringkasan Pesanan</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produk</th>
+                        <th>Harga</th>
+                        <th>Kuantitas</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Produk A</td>
+                        <td>Rp 100.000</td>
+                        <td>2</td>
+                        <td>Rp 200.000</td>
+                    </tr>
+                    <tr>
+                        <td>Produk B</td>
+                        <td>Rp 150.000</td>
+                        <td>1</td>
+                        <td>Rp 150.000</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="3">Total</td>
+                        <td>Rp 350.000</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="guest-details">
-            <h2>Detail Tamu</h2>
-            <label for="name">Nama Lengkap:</label>
-            <input type="text" id="name" placeholder="Nama Lengkap">
+        <!-- Billing Information -->
+        <div class="billing-info">
+            <h2>Informasi Pembayaran</h2>
+            <form>
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Email">
+                <label for="address">Alamat Pengiriman</label>
+                <input type="text" id="address" name="address" placeholder="Masukkan alamat lengkap" required>
 
-            <label for="phone">Nomor Telepon:</label>
-            <input type="tel" id="phone" placeholder="Nomor Telepon">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+
+                <label for="phone">Nomor Telepon</label>
+                <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon" required>
+
+                <label for="payment-method">Metode Pembayaran</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="credit-card">Kartu Kredit</option>
+                    <option value="bank-transfer">Transfer Bank</option>
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                </select>
+
+                <button type="submit" class="btn">Bayar Sekarang</button>
+            </form>
         </div>
-
-        <div class="payment-summary">
-            <h2>Ringkasan Pembayaran</h2>
-            <p><strong>Harga :</strong> Rp 1.200.000</p>
-            <p><strong>Total:</strong> Rp 1.200.000</p>
-        </div>
-
-        <button class="checkout-button" onclick="window.location.href='pay.html'">Bayar Sekarang</button>
-
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const checkoutButton = document.querySelector(".checkout-button");
-    
-            checkoutButton.addEventListener("click", () => {
-                // Mengambil detail tamu
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const phone = document.getElementById("phone").value;
-    
-                // Validasi
-                if (!name || !email || !phone) {
-                    alert("Mohon lengkapi semua detail tamu sebelum melanjutkan ke pembayaran.");
-                    return;
-                }
-    
-                // Konfirmasi Checkout
-                const confirmation = confirm("Apakah Anda yakin ingin melakukan pembayaran?");
-                if (confirmation) {
-                    // Simulasi proses pembayaran berhasil
-                    alert(`Pembayaran sukses!\nTerima kasih ${name} telah melakukan pemesanan.`);
-    
-                    // Redirect ke halaman sukses atau reset form jika diperlukan
-                    // window.location.href = "sukses.html"; // Opsional: Redirect ke halaman sukses
-                    // Reset form
-                    document.getElementById("name").value = "";
-                    document.getElementById("email").value = "";
-                    document.getElementById("phone").value = "";
-                }
-        // Tampilkan modal sukses
-                    modal.style.display = "flex";
-
-                    // Reset form
-                    document.getElementById("name").value = "";
-                    document.getElementById("email").value = "";
-                    document.getElementById("phone").value = "";
-
-                    // Sembunyikan modal setelah beberapa detik
-                    setTimeout(() => {
-                        modal.style.display = "none";
-                    }, 3000);
-                }
-            });
-    </script>
+</div>
 
 </body>
 </html>
