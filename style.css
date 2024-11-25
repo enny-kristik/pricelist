@@ -81,8 +81,11 @@
     border: 1px solid #000000;
     border-radius: 8px;
     overflow: hidden;
+    padding: 20%;
+    width: 90%;
+    max-width: 400%;
     text-align: center;
-    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    box-shadow: 0 4px 8px rgb(255, 255, 255);
     transition: transform 0.3s ease;
   }
   
