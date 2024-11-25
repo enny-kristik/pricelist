@@ -77,15 +77,13 @@
   }
   
   .price-box {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color:  #ff5aa7;
+    border: 1px solid #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgb(255, 254, 254);
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
+    overflow: hidden;
     text-align: center;
-    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgb(255, 254, 254);
+    transition: transform 0.3s ease;
   }
   
   .price-box h2 {
