@@ -1,192 +1,85 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Checkout</title>
-    <style>
-        /* Global styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Flexbox layout for larger screens */
-        .checkout-section {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .order-summary, .billing-info {
-            width: 48%;
-            margin-bottom: 20px;
-        }
-        
-        /* Styling for tables and forms */
-        .order-summary table, .billing-info form {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .order-summary table th, .order-summary table td, .billing-info form label, .billing-info form input, .billing-info form select {
-            padding: 8px;
-            margin: 4px 0;
-        }
-        .order-summary table th {
-            background-color: #f2f2f2;
-        }
-        .order-summary table td, .billing-info form input, .billing-info form select {
-            border: 1px solid #ccc;
-        }
-        .order-summary .total {
-            font-weight: bold;
-            font-size: 1.2em;
-            text-align: right;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .checkout-section {
-                flex-direction: column;
-                align-items: center;
-            }
-            .order-summary, .billing-info {
-                width: 100%;
-            }
-        }
-
-        /* Button styles */
-        .btn {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            border: none;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-
-        /* Error message styling */
-        .error {
-            color: red;
-            font-size: 0.9em;
-        }
-    </style>
+</main>
+<title>Formulir Pesanan</title>
+<style>
+     body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+h1 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
+}
+form {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+input:focus {
+  border-color: #e43b9b;
+  outline: none;
+}
+button {
+  background-color: #e43b9b;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #ef3b9b;
+}
+@media (max-width: 480px) {
+  h1 {
+      font-size: 24px;
+  }
+  form {
+      padding: 15px;
+  }
+  input, button {
+      padding: 8px;
+  }
+}
+</style>
 </head>
 <body>
+<h1>Formulir Pesanan</h1>
+<form id="orderForm">
+    <label for="name">Nama:</label>
+    <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
 
-<div class="container">
-    <h1>Halaman Checkout</h1>
-    <div class="checkout-section">
-        <!-- Order Summary -->
-        <div class="order-summary">
-            <h2>Ringkasan Pesanan</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produk</th>
-                        <th>Harga</th>
-                        <th>Kuantitas</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Produk A</td>
-                        <td>Rp 100.000</td>
-                        <td>2</td>
-                        <td>Rp 200.000</td>
-                    </tr>
-                    <tr>
-                        <td>Produk B</td>
-                        <td>Rp 150.000</td>
-                        <td>1</td>
-                        <td>Rp 150.000</td>
-                    </tr>
-                    <tr class="total">
-                        <td colspan="3">Total</td>
-                        <td>Rp 350.000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <label for="product">Produk:</label>
+    <input type="text" id="product" name="product" placeholder="Masukkan nama produk" required>
 
-        <!-- Billing Information -->
-        <div class="billing-info">
-            <h2>Informasi Pembayaran</h2>
-            <form id="checkout-form">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+    <label for="quantity">Jumlah:</label>
+    <input type="number" id="quantity" name="quantity" placeholder="Masukkan jumlah produk" required>
 
-                <label for="address">Alamat Pengiriman</label>
-                <input type="text" id="address" name="address" placeholder="Masukkan alamat lengkap" required>
+    <label for="address">Alamat:</label>
+    <input type="text" id="address" name="address" placeholder="Masukkan alamat Anda" required>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+    <label for="ucapan">Ucapan:</label>
+    <input type="text" id="ucapan" name="ucapan" placeholder="Masukkan ucapan Anda" required>
 
-                <label for="phone">Nomor Telepon</label>
-                <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon" required>
-
-                <label for="payment-method">Metode Pembayaran</label>
-                <select id="payment-method" name="payment-method" required>
-                    <option value="credit-card">Kartu Kredit</option>
-                    <option value="bank-transfer">Transfer Bank</option>
-                    <option value="cash-on-delivery">Cash on Delivery</option>
-                </select>
-
-                <div class="error" id="error-message"></div>
-
-                <button type="submit" class="btn">Bayar Sekarang</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Fungsi untuk menangani pengiriman formulir checkout
-    document.getElementById("checkout-form").addEventListener("submit", function(event) {
-        event.preventDefault();  // Mencegah pengiriman form biasa untuk validasi
-
-        // Mengambil nilai dari inputan
-        var name = document.getElementById("name").value;
-        var address = document.getElementById("address").value;
-        var email = document.getElementById("email").value;
-        var phone = document.getElementById("phone").value;
-        var paymentMethod = document.getElementById("payment-method").value;
-
-        // Validasi form
-        if (!name || !address || !email || !phone) {
-            document.getElementById("error-message").textContent = "Semua kolom harus diisi!";
-            return;
-        } else {
-            document.getElementById("error-message").textContent = ""; // Menghapus pesan error
-        }
-
-        // Simulasi pemrosesan pembayaran
-        alert("Pembayaran berhasil menggunakan metode: " + paymentMethod + "\n" +
-              "Total: Rp 350.000\n" +
-              "Terima kasih telah berbelanja!");
-    });
-</script>
-
-</body>
-</html>
+    <button type="button" onclick="sendToWhatsApp()">Kirim Pesanan</button>
+</form>
