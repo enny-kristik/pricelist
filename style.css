@@ -1,166 +1,180 @@
-/* style.css */
-
-/* Reset dasar dan styling */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 100vh;
-  }
-  
-  header {
+  box-sizing: border-box;
+}
+ 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #7EC855;
+  font-family: 'Roboto', sans-serif;
+}
+
+.shopping-cart {
+  width: 750px;
+  height: 423px;
+  margin: 80px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+ 
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+ 
+.item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+}
+ 
+.item:nth-child(3) {
+  border-top:  1px solid #E1E8EE;
+  border-bottom:  1px solid #E1E8EE;
+}
+
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  background: url(&amp;amp;quot;delete-icn.svg&amp;amp;quot;) no-repeat center;
+}
+ 
+.like-btn {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  background: url('twitter-heart.png');
+  width: 60px;
+  height: 60px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+}
+
+.is-active {
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(28);
+  animation-fill-mode: forwards;
+}
+ 
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+}
+
+.image {
+  margin-right: 50px;
+}
+ 
+Let’s add some basic style to  product name and description.
+.description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 115px;
+}
+ 
+.description span {
+  display: block;
+  font-size: 14px;
+  color: #43484D;
+  font-weight: 400;
+}
+ 
+.description span:first-child {
+  margin-bottom: 5px;
+}
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #86939E;
+}
+
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+}
+.quantity input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+ 
+button[class*=btn] {
+  width: 30px;
+  height: 30px;
+  background-color: #E1E8EE;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.minus-btn img {
+  margin-bottom: 3px;
+}
+.plus-btn img {
+  margin-top: 2px;
+}
+ 
+button:focus,
+input:focus {
+  outline:0;
+}
+
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+
+@media (max-width: 800px) {
+  .shopping-cart {
     width: 100%;
-    background-color: #ff5aa7;
-    padding: 10px 0;
-    color: #fff;
+    height: auto;
+    overflow: hidden;
   }
-  
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .navbar h1 {
-    font-size: 24px;
-    color: #fff;
-  }
-  
-  .navbar-links a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-btn {
-    background-color: #e00561 ;
-  }
-  
-  .cta-btn {
-    background-color: #e00561 ;
-  }
-  
-  .navbar-links a:hover {
-    background-color: #666;
-  }
-  
-  .menu-toggle {
-    display: none;
-    font-size: 24px;
-    color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .container {
-    display: flex;
+  .item {
+    height: auto;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+  }
+  .image img {
+    width: 50%;
+  }
+  .image,
+  .quantity,
+  .description {
     width: 100%;
-  }
-  
-  .price-box {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
     text-align: center;
-    transition: transform 0.3s;
+    margin: 6px 0;
   }
-  
-  .price-box h2 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 10px;
+  .buttons {
+    margin-right: 20px;
   }
-  
-  .price {
-    font-size: 24px;
-    color: #4CAF50;
-    margin-bottom: 15px;
-  }
-  
-  .price-box p {
-    margin: 5px 0;
-    color: #333;
-  }
-  
-  .order-btn {
-    display: inline-block;
-    background-color: #ff006a ;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .order-btn:hover {
-    background-color: #7e0034 ;
-  }
-  
-  footer {
-    width: 100%;
-    background-color: #ff5aa7;
-    padding: 15px 0;
-    color: #fff;
-    text-align: center;
-  }
-  
-  /* Gaya Responsif */
-  @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-  
-    .navbar h1 {
-        font-size: 20px;
-    }
-  
-    .navbar-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-  
-    .navbar-links a {
-        margin: 5px 0;
-        width: 100%;
-        text-align: center;
-    }
-  
-    .menu-toggle {
-        display: block;
-    }
-  
-    .menu-toggle.active + .navbar-links {
-        display: flex;
-    }
-  
-    .price-box {
-        width: 100%;
-    }
-  }
-  
+}
