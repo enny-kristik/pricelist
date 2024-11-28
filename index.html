@@ -72,3 +72,123 @@
         }
     </style>
 </html>
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #ff5aa7;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-details {
+            padding: 15px;
+        }
+        .product-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 0;
+        }
+        .product-price {
+            color: #fafffb;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        .add-to-cart-btn {
+            background-color: #2fec1e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #ffffff;
+        }
+        .cart {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Etalase Jualan</h1>
+    <div class="product-grid">
+        <!-- Produk 1 -->
+        <div class="product-card">
+            <img src="enny1foto.jpg" alt="Produk 1" class="product-image">
+            <div class="product-details">
+                <p class="product-name">Produk 1</p>
+                <p class="product-price">Rp.1.200.000</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Produk 1', 1200000)">Tambah ke Keranjang</button>
+            </div>
+        </div>
+        <!-- Produk 2 -->
+        <div class="product-card">
+            <img src="enny34foto.jpg" alt="Produk 2" class="product-image">
+            <div class="product-details">
+                <p class="product-name">Produk 2</p>
+                <p class="product-price">Rp 900.000</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Produk 2', 900000)">Tambah ke Keranjang</button>
+            </div>
+        </div>
+        <!-- Produk 3 -->
+        <div class="product-card">
+            <img src="tmbulat2.jpg" alt="Produk 3" class="product-image">
+            <div class="product-details">
+                <p class="product-name">Produk 3</p>
+                <p class="product-price">Rp 800.000</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Produk 3', 800000)">Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Keranjang Belanja</h2>
+        <ul id="cart-items"></ul>
+        <p id="total-price">Total: Rp 0</p>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: productPrice });
+            total += productPrice;
+            updateCart();
+        }
+
+        function updateCart() 
