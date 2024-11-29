@@ -1,74 +1,88 @@
 <!DOCTYPE html>
 <html lang="id">
-    <head>
-      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    </head>
+
+<head>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
 </main>
 <title>Formulir Pesanan</title>
 <style>
-     body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f4f4f4;
-  color: #333;
-}
-h1 {
-  text-align: center;
-  color: #000000;
-  margin-bottom: 20px;
-}
-form {
-  max-width: 400px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-input, button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  transition: border-color 0.3s;
-}
-input:focus {
-  border-color: #e43b9b;
-  outline: none;
-}
-button {
-  background-color: #e43b9b;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s;
-}
-button:hover {
-  background-color: #ef3b9b;
-}
-@media (max-width: 480px) {
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+
   h1 {
-      font-size: 24px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
   }
+
   form {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input,
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+
+  input:focus {
+    border-color: #e43b9b;
+    outline: none;
+  }
+
+  button {
+    background-color: #e43b9b;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #ef3b9b;
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 24px;
+    }
+
+    form {
       padding: 15px;
-  }
-  input, button {
+    }
+
+    input,
+    button {
       padding: 8px;
+    }
   }
-}
 </style>
 </head>
+
 <body>
-<h1>Formulir Pesanan</h1>
-<form id="orderForm">
+  <h1>Formulir Pesanan</h1>
+  <form id="orderForm">
     <label for="name">Nama:</label>
     <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
 
@@ -82,48 +96,49 @@ button:hover {
     <input type="text" id="address" name="address" placeholder="Masukkan alamat Anda" required>
 
     <button type="button" onclick="sendToWhatsApp()">Kirim Pesanan</button>
-</form>
+  </form>
 
-<html lang="id">
-<head>
+  <html lang="id">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latar Belakang Gradient</title>
     <style>
-        body {
-            background: linear-gradient(to right, #ffffff, #e00561); /* Gradien dari merah muda ke maron */
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-</html>
-
-<script>
-  function sendToWhatsApp() {
-       const name = document.getElementById('name').value;
-       const product = document.getElementById('product').value;
-       const quantity = document.getElementById('quantity').value;
-       const address = document.getElementById('address').value;
-       const ucapan = document.getElementById('ucapan').value;
-     
-      if (name && product && quantity && address && ucapan) {
-          // Membuat pesan
-          const message = 'Halo, saya ingin sulaman:\n\n' +
-                          'Nama: ${name}\n' +
-                          'Produk: ${product}\n' +
-                          'Jumlah: ${quantity}\n' +
-                          'Alamat: ${address} \n';
-          
-          // Nomor WhatsApp tujuan (gunakan format internasional tanpa tanda +)
-          const phoneNumber = "6285270317187"; // Ganti dengan nomor Anda
-          const url = 'https://wa.me/${6285270317187}?text=${encodeURIComponent(message)}';
-          
-          // Membuka WhatsApp
-          window.open(url, '_blank');
-      } else {
-          alert('Harap isi semua data pada formulir.');
+      body {
+        background: linear-gradient(to right, #ffffff, #e00561);
+        /* Gradien dari merah muda ke maron */
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
       }
-  }
-</script>
+    </style>
+  </html>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById('name').value;
+      const product = document.getElementById('product').value;
+      const quantity = document.getElementById('quantity').value;
+      const address = document.getElementById('address').value;
+      const ucapan = document.getElementById('ucapan').value;
+
+      if (name && product && quantity && address ) {
+        // Membuat pesan
+        const message = 'Halo, saya ingin sulaman:\n\n' +
+          'Nama: ${name}\n' +
+          'Produk: ${product}\n' +
+          'Jumlah: ${quantity}\n' +
+          'Alamat: ${address} \n';
+
+        // Nomor WhatsApp tujuan (gunakan format internasional tanpa tanda +)
+        const phoneNumber = "6285270317187"; // Ganti dengan nomor Anda
+        const url = 'https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}';
+
+        // Membuka WhatsApp
+        window.open(url, '_blank');
+      } else {
+        alert('Harap isi semua data pada formulir.');
+      }
+    }
+  </script>
